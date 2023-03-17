@@ -1,0 +1,26 @@
+html{
+    background-color: white;
+    height: 100%;
+}
+
+body{
+    min-width: 380px;
+}
+
+.container{
+    background-color: grey;
+    text-align: center;
+    margin: auto;
+    height: 210px;
+    width: 380px;
+}
+
+.timerClass{
+    padding: 5px 5px;
+    display: flex;
+}
+
+.nameClass{
+    width: 50px;
+    text-align: center;
+}
