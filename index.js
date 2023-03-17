@@ -346,3 +346,60 @@ resetGoldEl.addEventListener("click", () => {
   secondsGoldEl.value = "0";
   clearInterval(startTimerGold);
 });
+
+const startEggsEl = document.getElementById("startEggs");
+const resetEggsEl = document.getElementById("resetEggs");
+const audioEggs = new Audio("Eggs.mp3");
+
+let hoursEggsEl = document.getElementById("hoursEggs");
+let minutesEggsEl = document.getElementById("minutesEggs");
+let secondsEggsEl = document.getElementById("secondsEggs");
+
+const timerEggs = () => {
+  if (
+    hoursEggsEl.value == 0 &&
+    minutesEggsEl.value == 0 &&
+    secondsEggsEl.value == 0
+  ) {
+    hoursEggsEl.value = "0";
+    minutesEggsEl.value = "0";
+    secondsEggsEl.value = "0";
+    hoursEggsEl.disabled = false;
+    minutesEggsEl.disabled = false;
+    secondsEggsEl.disabled = false;
+    startEggsEl.disabled = false;
+    audioEggs.play();
+    clearInterval(startTimerEggs);
+  } else if (secondsEggsEl.value != 0) {
+    secondsEggsEl.value--;
+  } else if (minutesEggsEl.value != 0 && secondsEggsEl.value == 0) {
+    secondsEggsEl.value = 59;
+    minutesEggsEl.value--;
+  } else if (hoursEggsEl.value != 0 && minutesEggsEl.value == 0) {
+    minutesEggsEl.value = 59;
+    secondsEggsEl.value = 59;
+    hoursEggsEl.value--;
+  }
+};
+
+startEggsEl.addEventListener("click", () => {
+  hoursEggsEl.disabled = true;
+  minutesEggsEl.disabled = true;
+  secondsEggsEl.disabled = true;
+  startEggsEl.disabled = true;
+
+  startTimerEggs = setInterval(() => {
+    timerEggs();
+  }, 1000);
+});
+
+resetEggsEl.addEventListener("click", () => {
+  hoursEggsEl.disabled = false;
+  minutesEggsEl.disabled = false;
+  secondsEggsEl.disabled = false;
+  startEggsEl.disabled = false;
+  hoursEggsEl.value = "0";
+  minutesEggsEl.value = "0";
+  secondsEggsEl.value = "0";
+  clearInterval(startTimerEggs);
+});
